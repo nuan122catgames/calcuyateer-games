@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор</h1>
+        
+        <div class="nav">
+            <button id="calcModeBtn" class="nav-btn active">Калькулятор</button>
+            <button id="gameModeBtn" class="nav-btn">Игра</button>
+        </div>
+
+        <button id="achievementsBtn" class="achievements-btn">
+            🏆 Достижения
+            <span id="achBadge" class="ach-badge">0/10</span>
+        </button>
+        
+        <!-- Режим калькулятора -->
+        <div id="calculatorMode" class="mode">
+            <div class="calculator">
+                <div class="input-group">
+                    <input type="number" id="num1" placeholder="Первое число" step="any">
+                    <select id="operation">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">×</option>
+                        <option value="/">÷</option>
+                    </select>
+                    <input type="number" id="num2" placeholder="Второе число" step="any">
+                </div>
+                <button id="calculateBtn">Вычислить</button>
+                <div class="result">
+                    <span>Результат:</span>
+                    <div id="result" class="result-value">-</div>
+                </div>
+                <div id="error" class="error" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <!-- Режим игры -->
+        <div id="gameMode" class="mode" style="display: none;">
+            <div class="game-info">
+                <div>Время: <span id="gameTime">25</span>с</div>
+                <div>Счет: <span id="gameScore">0</span></div>
+            </div>
+            
+            <div id="gameStartScreen">
+                <p class="game-description">За 25 секунд реши как можно больше лёгких примеров!</p>
+                <button id="startGameBtn" class="game-btn">Начать игру</button>
+            </div>
+            
+            <div id="gamePlayScreen" style="display: none;">
+                <div class="example">
+                    <span id="numA">0</span>
+                    <span id="opSymbol">+</span>
+                    <span id="numB">0</span>
+                    <span>=</span>
+                </div>
+                <input type="number" id="answerInput" placeholder="Ответ" step="any">
+                <button id="checkAnswerBtn" class="game-btn">Ответить</button>
+                <div id="feedback" class="feedback"></div>
+            </div>
+            
+            <div id="gameEndScreen" style="display: none;">
+                <h2>Игра окончена!</h2>
+                <p>Правильных ответов: <span id="finalGameScore">0</span></p>
+                <p>Точность: <span id="finalGameAccuracy">0</span>%</p>
+                <button id="restartGameBtn" class="game-btn">Играть снова</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Окно достижений -->
+    <div id="achievementsModal" class="achievements-modal" style="display: none;">
+        <div class="achievements-panel">
+            <div class="achievements-head">
+                <h2>🏆 Достижения</h2>
+                <button id="closeAchievements" class="modal-close" title="Закрыть">✕</button>
+            </div>
+            <p class="achievements-summary">Открыто <span id="achOpened">0</span> из <span id="achTotal">10</span></p>
+            <div class="achievements-list" id="achievementsList"></div>
+        </div>
+    </div>
+
+    <!-- Всплывающие уведомления -->
+    <div class="toast-area" id="toastArea"></div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

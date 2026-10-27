@@ -1,0 +1,496 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+.nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.nav-btn {
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.nav-btn:hover {
+    background: #bdbdbd;
+}
+
+.nav-btn.active:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a4291 100%);
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+input[type="number"] {
+    padding: 12px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+select {
+    padding: 12px 20px;
+    font-size: 1.3em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #eee;
+}
+
+.result span {
+    display: block;
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.result-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    word-break: break-all;
+}
+
+.error {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffcdd2;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.game-description {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.game-btn {
+    background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+    margin: 10px 0;
+}
+
+.game-btn:hover {
+    box-shadow: 0 5px 15px rgba(67, 160, 71, 0.4);
+}
+
+.example {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 30px 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#answerInput {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.feedback {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+.feedback.correct {
+    color: #43a047;
+}
+
+.feedback.wrong {
+    color: #d32f2f;
+}
+
+#gameEndScreen h2 {
+    color: #d32f2f;
+    margin-bottom: 15px;
+}
+
+#gameEndScreen p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ---------- Достижения ---------- */
+.achievements-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #f5a623 0%, #d68910 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.achievements-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 166, 35, 0.45);
+}
+
+.ach-badge {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.85em;
+}
+
+.achievements-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.achievements-panel {
+    background: #fff;
+    width: 100%;
+    max-width: 560px;
+    max-height: 85vh;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: panelUp 0.25s ease;
+    text-align: left;
+}
+
+@keyframes panelUp {
+    from { transform: translateY(25px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.achievements-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.achievements-head h2 {
+    color: #333;
+    font-size: 1.7em;
+}
+
+.modal-close {
+    background: #eee;
+    color: #555;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+.modal-close:hover {
+    background: #ddd;
+    transform: none;
+    box-shadow: none;
+}
+
+.achievements-summary {
+    color: #777;
+    margin: 8px 0 18px;
+    font-size: 0.95em;
+}
+
+.achievements-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+}
+
+.achievement-card {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #eee;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.achievement-card.unlocked {
+    border-color: #f5a623;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cf 100%);
+}
+
+.achievement-card.locked {
+    opacity: 0.8;
+}
+
+.achievement-icon {
+    font-size: 2em;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 46px;
+    text-align: center;
+}
+
+.achievement-card.locked .achievement-icon {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.achievement-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.achievement-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.achievement-card.unlocked .achievement-title {
+    color: #b9770e;
+}
+
+.achievement-desc {
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+.achievement-status {
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #ddd;
+    color: #666;
+}
+
+.achievement-card.unlocked .achievement-status {
+    background: #f5a623;
+    color: #fff;
+}
+
+.ach-progress {
+    margin-top: 8px;
+    height: 7px;
+    background: #e4e4e4;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ach-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f5a623, #d68910);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.ach-progress-label {
+    margin-top: 4px;
+    font-size: 0.78em;
+    color: #999;
+}
+
+/* ---------- Уведомления ---------- */
+.toast-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.toast {
+    background: linear-gradient(135deg, #f5a623 0%, #d68910 100%);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    animation: toastIn 0.35s ease, toastOut 0.4s ease 3.2s forwards;
+    max-width: 340px;
+}
+
+.toast-icon {
+    font-size: 1.9em;
+}
+
+.toast-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-label {
+    font-size: 0.75em;
+    font-weight: normal;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+@keyframes toastIn {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px 18px;
+    }
+
+    .toast-area {
+        left: 12px;
+        right: 12px;
+        top: 12px;
+    }
+
+    .toast {
+        max-width: none;
+    }
+}
